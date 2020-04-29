@@ -1,0 +1,10 @@
+.figcap {
+  display: grid;
+  align-content: center;
+  align-self: center
+}
+.col-sm{
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
+}
