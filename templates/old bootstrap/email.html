@@ -1,0 +1,95 @@
+<html>
+        {% load static %}
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static "fm/email_master.css" %}">
+            
+    </head>
+    <body>
+        
+        <div class="container">
+                <form id="contact-form" method="post" action="{% url 'email_done' %}" role="form" >
+
+                        
+                        <div class="controls jumbotron">
+                    
+                           
+                                
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Email *</label>
+                                        <input id="form_email" type="email" name="email" class="form-control" placeholder="To *" required="required" data-error="Valid email is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <!--
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_email">Email CC/BCC</label>
+                                            <input id="form_email" type="text" name="email" class="form-control" placeholder="For multiple separate by , (comma) "  data-error="Valid email is required.">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>-->
+                               
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_subject">Subject </label>
+                                                <textarea id="form_subject" name="subject" class="form-control" placeholder="Subject" rows="1" ></textarea>
+                                            </div>
+                                        </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_message">Message </label>
+                                        <textarea id="form_message" name="message" class="form-control" placeholder="Message" rows="5" ></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                        <a href="#" name="file" value="{{file}}" class="btn btn-outline-dark btn-lg disabled" role="button"  aria-disabled="true" >File:{{file}}<br>Size:{{size}} </a>
+                                    </div>
+                                   
+                                    <div class="col-md-12">
+                                    <input type="hidden" name="file" value="{{file}}">
+                                    
+                                            
+                                        <input type="submit" class="btn btn-success btn-send" value="Send Mail" onclick="showSpinner()">
+                                </div>
+                            
+                                    {% csrf_token %}
+                                       
+                                
+
+
+                                </div>
+                                <div class="alert-text-spinner" id="alertextspinner">
+                                    <div class="alert alert-primary" role="alert">
+                                        <div class="spinner-border float-right" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                          </div>
+                                          <h5>Sending...</h5>
+                                        </div>
+                                    </div>
+                            </div>
+                           
+                           <script>
+                                function showSpinner(){
+                                    document.getElementById("alertextspinner").style.visibility="visible" 
+                                    
+                                }
+                            
+                            </script>
+                        
+                    
+                    </form>
+        </div>
+
+
+    </body>
+</html>

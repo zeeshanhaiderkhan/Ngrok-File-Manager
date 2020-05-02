@@ -26,7 +26,11 @@ SECRET_KEY = '5@%j^8qgqn2)%f^+uot9kio_xv+o30vd4g1i=b*2+ovr^@6ws*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
+ALLOWED_HOSTS = ["zeenofilemanager.serveo.net",'127.0.0.1',"b67cd8de.ngrok.io"]
+=======
 ALLOWED_HOSTS = ["zeenofilemanager.serveo.net",'127.0.0.1',"zeeshanfilemanager.serveo.net"]
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 
 
 # Application definition
@@ -122,4 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     STATIC_DIR,
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f

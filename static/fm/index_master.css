@@ -3,8 +3,37 @@
   align-content: center;
   align-self: center
 }
+<<<<<<< HEAD
+
+#grids{
+  border-style: solid;
+  border-color: aliceblue;
+  border-width: 3px;
+}
+
+.icons{
+  width: 80px;
+  height: 80px;
+}
+.container{
+  background-color: floralwhite;
+
+}
+p{
+  color: #551A8B;
+  align-content: center;
+}
+#navtop{
+  background-color: floralwhite;
+}
+#logo{
+  padding-top: 20px;
+  width: 70px;
+  height: 50px;
+=======
 .col-sm{
   border-style: solid;
   border-color: black;
   border-width: 3px;
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 }

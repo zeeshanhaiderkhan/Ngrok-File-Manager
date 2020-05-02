@@ -20,5 +20,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="index.html"),
     path(r'view', views.view_detail, name='view_detail'),
+<<<<<<< HEAD
+    path(r'download',views.file_response,name='download'),
+    path(r'email',views.email_view,name='email'),
+    path(r'email_done',views.email_done,name='email_done'),
+    path(r'screenshot',views.screenshot,name="screenshot"),
+    path(r'camera',views.camera,name="camera"),
+    path(r'settings',views.settings,name="settings"),
+    path(r'settings_done',views.settings_done,name="settings_done"),
+    path(r'smartfile_upload',views.upload_smartfile,name="smartfile"),
+    path(r'shutdown',views.shutdown,name="shutdown"),
+=======
     path(r'download',views.file_response,name='download')
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 ]
