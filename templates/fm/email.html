@@ -1,0 +1,63 @@
+<html>
+        {% load static %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" href="{% static "fm/email_master.css" %}">
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+         
+    </head>
+    
+    <body>
+            
+        <div class="ui  container"> 
+                <form id="contact-form" method="post" action="{% url 'email_done' %}" role="form" >
+                      <div class="ui form ">
+                            <div class="inline field">
+                                    
+                                
+                                
+                                        <input type="hidden" name="file" value="{{file}}">
+
+                                    <label></label>
+                                  </div>
+                        <div class="field">
+                          <label>E-mail</label>
+                          <input placeholder="To *" type="email" name="email" data-error="Valid email is required." required="required">
+                        </div>
+                        <div class="field">
+                                <label >Subject</label>
+                                <input name="subject" placeholder="Subject" type="text">
+                        </div>
+                        <div class="field">
+                                <label>Message</label>
+                                <textarea name="message" >This Message is Sent through Sokratis-FileManager</textarea> 
+                        </div>        
+                        <div class="field">
+                        <button class="large ui disabled button">
+                                File:{{file}}<br>Size:{{size}}
+                        </button>
+                    </div>
+                    
+                
+                    <button type="submit" name="submit-button" class="ui medium blue submit button">
+                                <i class="envelope icon"></i>
+                                Send
+                              </button>
+                
+                      </div>
+                      {% csrf_token %}
+                      
+                
+                </form>
+
+            </div>
+    </body>
+    <script>
+    $('.ui.checkbox')
+        .checkbox();
+            </script>
+</html>

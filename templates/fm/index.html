@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "fm/" as baseUrl %}
+<html>
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="{% static "fm/index_master.css" %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        -->
+
+        <!--
+            Semantic UI
+        -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+         <!--
+            Semantic UI
+        -->
+        <body> 
+        <div class="ui labeled  borderless small icon pointing menu" id='navtop'>
+                <div class="item" >
+                    <img id="logo" src="{% static "fm/sokratis_logo.png" %}">
+                </div>
+            
+                <a class="item" href="/">
+                  <i class="circular home icon"></i>
+                  Home
+                </a>
+                <a class="item">
+                  <i class="circular user icon"></i>
+                  Users
+                </a>
+                
+                <a class="item" href="/screenshot">
+                  <i class="circular eye icon"></i>
+                        Screenshot
+                </a>
+                <a class="item" href="/camera">
+                        <i class="circular camera icon"></i>
+                        Webcam
+                </a>
+                <a class="item">
+                        <i class="circular bell icon"></i>
+                        Sound
+                </a>
+                
+                <div class="right menu">
+                  
+                    <div class="item">
+                        <div class="ui icon input">
+                          <input  id="search" name="search"  placeholder="Enter Direct Path..." type="text" class="query-search" placeholder="Enter Direct Path.." >
+                         <i id="searchBtn" onclick="setGetParameter()" class="search link circular icon"></i>
+                        </div>
+                      </div>
+                    <a class="item">
+                        <i class="circular question icon"></i>
+                        Help
+                    </a>
+                    
+
+
+                <a class="item" href="/settings">
+                    <i class="circular setting icon"></i>
+                    Settings
+                  </a>
+                <a class="item" href="/shutdown">
+                        <i class="circular power off icon"></i>
+                        Power Off
+                </a>
+              </div>
+                       
+                      
+              </div>
+                 
+
+        <!--jumbotron-->
+
+<div class="ui grid container"> 
+                    {%for i in foldersfiles %}
+              <div class="three wide column" id="grids">
+                        {% if i.is_file %}
+                        <a  oncontextmenu="window.alert('{{i.name_full}}\n{{i.size}}\n{{i.path}}')" onclick="" id="" data-value="">    
+                                <figure class="figureclass" >
+                                <img class="icons" src="{{baseUrl}}{{i.ext}}.png" alt="Folder" >
+                           
+                                <div class="ui dropdown">
+                                        <div class="text">
+                                          Menu  
+                                        </div>
+                                        <i class="dropdown icon"></i>
+                                        <div class="menu">
+                                          <div class="item" ><a href="download?search={{i.path}}"><i class="download icon"></i>Download</a></div>
+                                          <div class="item" ><a href="email?search={{i.path}}"><i class="envelope icon"></i>Send as E-mail</a></div>     
+                                          <div class="item" ><a href="smartfile_upload?filepath={{i.path}}"><i class="cloud upload icon"></i>Upload to SmartFile Cloud</a></div>     
+                                          <div class="item"><a onclick="window.alert('{{i.name_full}}\n{{i.size}}\n{{i.path}}')"><i class="align left icon"></i>Properties</a></div>
+                                        </div>
+                                      </div>
+                            {% else %}
+                            <a href="view?search={{i.path}}" onclick="" id="" data-value="">    
+                                <figure class="figureclass" >
+                            <img class="icons" src="{% static "fm/folder.png" %}" alt="Folder" >
+                            
+                           {%endif%}
+                            
+                            <figcaption class="figcap">   <p>{{i.name}}<br>{{i.size}}<p></figcaption>
+                    </figure>
+                </a>
+                    
+        </div>
+              
+                        
+            {% endfor %}
+        
+       
+            
+</div>            
+           
+                    
+
+                    <script>
+                
+                    $('.ui.dropdown')
+                    .dropdown();
+
+                    function setGetParameter(){
+                        searchWord = document.getElementById('search').value;
+                        window.location.href = "{% url 'view_detail' %}" + "?search="+searchWord;
+                    }
+                    function setGetParameterB(){
+                        searchWord = document.getElementById('search').value;
+                        window.location.href = "{% url 'email' %}" + "?search="+searchWord;
+                    }
+                    function setGetParameterC(){
+                        searchWord = document.getElementById('search-top').value;
+                        window.location.href = "{% url 'view_detail' %}" + "?search="+searchWord;
+                    }
+                    </script>
+                    <script>
+                    function clickAnchor(id){
+                        searchWord = document.getElementById(id).href;
+                        window.location.href = "{% url 'view_detail' %}" + "?search="+searchWord;
+                    }
+
+                      //FOR SEARCH
+                      // Get the input field
+                        var input = document.getElementById("search");
+
+                        // Execute a function when the user releases a key on the keyboard
+                        input.addEventListener("keyup", function(event) {
+                          // Number 13 is the "Enter" key on the keyboard
+                          if (event.keyCode === 13) {
+                            // Cancel the default action, if needed
+                            event.preventDefault();
+                            // Trigger the button element with a click
+                            document.getElementById("searchBtn").click();
+                          }
+                        }); 
+
+                    
+                    </script>
+                    
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html> 

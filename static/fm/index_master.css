@@ -1,0 +1,32 @@
+.figcap {
+  display: grid;
+  align-content: center;
+  align-self: center
+}
+
+#grids{
+  border-style: solid;
+  border-color: aliceblue;
+  border-width: 3px;
+}
+
+.icons{
+  width: 80px;
+  height: 80px;
+}
+.container{
+  background-color: floralwhite;
+
+}
+p{
+  color: #551A8B;
+  align-content: center;
+}
+#navtop{
+  background-color: floralwhite;
+}
+#logo{
+  padding-top: 20px;
+  width: 70px;
+  height: 50px;
+}

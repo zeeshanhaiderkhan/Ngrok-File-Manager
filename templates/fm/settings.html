@@ -1,0 +1,141 @@
+<html>
+    {% load static %}
+    <head>
+        <!--
+            Semantic UI
+        -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+         <!--
+            Semantic UI
+        -->
+        <link rel="stylesheet" href="{% static "fm/settings_master.css" %}">
+        
+    </head>
+    <body>
+        
+        <div class="ui container" id="all-form">
+         <form id="contact-form" method="post" action="{% url 'settings_done' %}" role="form" >
+            <div class="ui column  form">
+                    
+                        <div class="column  field">
+                            
+                                <label>Base Directory</label>
+                                
+                                <input placeholder="Base" name="base_directory" type="text" value="{{base_directory}}">
+                        </div>
+                        <div class="column  field">
+                                <label>Show Folder Size</label>
+                                <div class="ui selection dropdown">
+                                    <input name="folder_size" value="{{folder_size}}" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{folder_size}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">True</div>
+                                        <div class="item" data-value="False">False</div>
+                                    </div>
+                                </div>
+                        </div>
+            
+                        <div class="column  field">
+                                <label>Show File Size</label>
+                                <div class="ui selection dropdown">
+                                    <input name="file_size" type="hidden" value="{{file_size}}">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{file_size}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">True</div>
+                                        <div class="item" data-value="False">False</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="column  field">
+
+                                <label>E-mail</label>
+                                <input placeholder="Default E-mail" type="email" name="email" data-error="Valid email is required." required="" value="{{email}}">
+                        </div>
+                         
+                        <div class="column  field">
+                                    <label>Password</label>
+                                    <input placeholder="Default E-mail Password" type="password" name="email_password" value="password">
+                        </div>
+                        <div class="column  field">
+                                <label>SmartFile API </label>
+                                <input name="smartfile_api" placeholder="SmartFile API" type="text" value="{{smartfile_api}}">
+                        </div>
+                        <div class="column  field">
+                                <label>SmartFile API Password</label>
+                                <input name="smartfile_password" placeholder="SmartFile API Password" type="text" value="{{smartfile_password}}">
+                        </div>      
+                        <div class="column  field">
+                                <label>Webcam</label>
+                                <div class="ui selection dropdown">
+                                    <input name="webcam" value="{{webcam}}" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{webcam}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">True</div>
+                                        <div class="item" data-value="False">False</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="column  field">
+                                <label>Screenshot</label>
+                                <div class="ui selection dropdown">
+                                    <input name="screenshot" value="{{screenshot}}" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{screenshot}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">True</div>
+                                        <div class="item" data-value="False">False</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="column  field">
+                                <label>Deleting</label>
+                                <div class="ui selection dropdown">
+                                    <input name="deleting" value="{{deleting}}" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{deleting}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">True</div>
+                                        <div class="item" data-value="False">False</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="column  field">
+                                <label>Server</label>
+                                <div class="ui selection dropdown">
+                                    <input name="server" value="{{server}}" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{server}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="True">Serveo</div>
+                                        <div class="item" data-value="False">Ngrok</div>
+                                    </div>
+                                </div>
+                        </div>
+                        {% csrf_token %}
+                        <button type="submit" name="submit-button" class="ui medium blue submit button">
+                                <i class="save icon"></i>
+                                Save
+                              </button>
+                                       
+                        <script>
+                                $('.ui.checkbox')
+                                .checkbox();
+                                $('.ui.dropdown')
+                                    .dropdown();
+                        </script>  
+                              
+                        
+            </div>
+         </form>
+        </div>
+
+    </body>
+</html>
