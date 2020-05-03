@@ -2,6 +2,7 @@ from django.shortcuts import render
 import os
 from django.http import HttpResponse, HttpResponseNotFound, FileResponse
 from wsgiref.util import FileWrapper
+<<<<<<< HEAD
 from fm.structure import File
 from fm.mail import SendEmail
 # Create your views here.
@@ -77,6 +78,19 @@ def camera(request):
     response['Content-Disposition'] = 'attachment; filename=picture.jpg'
     return response
     
+=======
+# Create your views here.
+
+def scanner(path="D:\\"):
+    files,folders=[],[]
+    for i in os.scandir(path):
+        if i.is_file():
+            files.append(i)
+        else:
+            folders.append(i)
+    return {'foldersfiles':folders+files}
+
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 def index(request):
     content = scanner()
     return render(request,'fm/index.html',context=content)
@@ -88,6 +102,7 @@ def folder_view(request):
     requested_data = request.GET.get('a')
     content= scanner(requested_data)
     return render(request,'fm/index.html',context=content)
+<<<<<<< HEAD
 def email_view(request):
     #post get ... mail address etc
     requested_data = request.GET.get('search')
@@ -104,6 +119,8 @@ def email_done(request):
     email_setup = SendEmail(['smtp.gmail.com', 587, 'sokratis.email@gmail.com', 'iloveyousokratis1234'])
     status = email_setup.send(to_address=[email],body=message,attachments=[file])
     return render(request,'fm/email_done.html',context={'status':status})
+=======
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 '''
 def file_response(request):
     requested_data = request.GET.get('search')
@@ -115,20 +132,35 @@ def file_response(request):
 '''
 def file_response(request):
     requested_data = request.GET.get('search')
+<<<<<<< HEAD
+=======
+    file_location = requested_data
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 
     try:    
         #with open(file_location, 'r') as f:
           # file_data = f.read()
+<<<<<<< HEAD
         file = open(requested_data,'rb')
         # sending response 
         response= FileResponse(file)
         response['Content-Disposition'] = 'attachment; filename={}'.format(os.path.split(requested_data)[1])
+=======
+        file = open(file_location,'rb')
+        # sending response 
+        response= FileResponse(file)
+        response['Content-Disposition'] = 'attachment; filename={}'.format(os.path.split(file_location)[1])
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
 
     except IOError:
         # handle file not exist case here
         response = HttpResponseNotFound('<h1>File not exist</h1>')
 
+<<<<<<< HEAD
     return response
 def file_size(path):
     ##MB
     return os.path.getsize(path)/(1024*1024)
+=======
+    return response
+>>>>>>> 14979eb57f97c05423aea52fa679fb9552adde4f
